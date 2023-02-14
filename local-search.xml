@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>最长公共前缀.md</title>
+    <link href="/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80-md/"/>
+    <url>/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80-md/</url>
+    
+    <content type="html"><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串””。</p><p>例如：</p><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs armasm">输入：<span class="hljs-keyword">strs</span> = [<span class="hljs-string">&quot;flower&quot;</span>,<span class="hljs-string">&quot;flow&quot;</span>,<span class="hljs-string">&quot;flight&quot;</span>]<br>输出：<span class="hljs-string">&quot;fl&quot;</span><br><br>输入：<span class="hljs-keyword">strs</span> = [<span class="hljs-string">&quot;dog&quot;</span>,<span class="hljs-string">&quot;racecar&quot;</span>,<span class="hljs-string">&quot;car&quot;</span>]<br>输出：<span class="hljs-string">&quot;&quot;</span><br>解释：输入不存在公共前缀。<br></code></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>首先进行边界处理，如果数组的长度&lt;&#x3D; 1，直接返回第一个数组元素。接下来利用sort方法对数组进行排序，排序之后的结果中数组元素最长的元素将会在数组的最后一位，再来进行遍历循环。</p><p>获取数组中第一项的长度，利用这个元素的长度作为条件进行循环，利用数组中最后一项逐个字符与数组的第一项逐个字符进行比较，如果出现不同，则直接结束这个循环。</p><p>循环之后，如果i值等于0，则表示没用公共前缀，所以直接返回空字符串。否则返回数组第一项中0到i的截取。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">longestCommonPrefix</span> = (<span class="hljs-params">strs</span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (strs.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> strs[<span class="hljs-number">0</span>];<br>  strs.<span class="hljs-title function_">sort</span>();<br>  <span class="hljs-keyword">let</span> len = strs[<span class="hljs-number">0</span>].<span class="hljs-property">length</span>;<br>  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (i; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">if</span> (strs[strs.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>].<span class="hljs-title function_">charAt</span>(i) !== strs[<span class="hljs-number">0</span>].<span class="hljs-title function_">charAt</span>(i)) <span class="hljs-keyword">break</span>;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-keyword">return</span> strs[<span class="hljs-number">0</span>].<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, i);<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端基础</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端基础</tag>
+      
+      <tag>最长公共前缀</tag>
+      
+      <tag>算法基础题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>获取两数之和索引.md</title>
     <link href="/2023/02/11/%E8%8E%B7%E5%8F%96%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E7%B4%A2%E5%BC%95-md/"/>
     <url>/2023/02/11/%E8%8E%B7%E5%8F%96%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E7%B4%A2%E5%BC%95-md/</url>

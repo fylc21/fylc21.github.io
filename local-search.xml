@@ -5,8 +5,8 @@
   
   <entry>
     <title>最长公共前缀.md</title>
-    <link href="/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80-md/"/>
-    <url>/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80-md/</url>
+    <link href="/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/"/>
+    <url>/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/</url>
     
     <content type="html"><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串””。</p><p>例如：</p><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs armasm">输入：<span class="hljs-keyword">strs</span> = [<span class="hljs-string">&quot;flower&quot;</span>,<span class="hljs-string">&quot;flow&quot;</span>,<span class="hljs-string">&quot;flight&quot;</span>]<br>输出：<span class="hljs-string">&quot;fl&quot;</span><br><br>输入：<span class="hljs-keyword">strs</span> = [<span class="hljs-string">&quot;dog&quot;</span>,<span class="hljs-string">&quot;racecar&quot;</span>,<span class="hljs-string">&quot;car&quot;</span>]<br>输出：<span class="hljs-string">&quot;&quot;</span><br>解释：输入不存在公共前缀。<br></code></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>首先进行边界处理，如果数组的长度&lt;&#x3D; 1，直接返回第一个数组元素。接下来利用sort方法对数组进行排序，排序之后的结果中数组元素最长的元素将会在数组的最后一位，再来进行遍历循环。</p><p>获取数组中第一项的长度，利用这个元素的长度作为条件进行循环，利用数组中最后一项逐个字符与数组的第一项逐个字符进行比较，如果出现不同，则直接结束这个循环。</p><p>循环之后，如果i值等于0，则表示没用公共前缀，所以直接返回空字符串。否则返回数组第一项中0到i的截取。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">longestCommonPrefix</span> = (<span class="hljs-params">strs</span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (strs.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> strs[<span class="hljs-number">0</span>];<br>  strs.<span class="hljs-title function_">sort</span>();<br>  <span class="hljs-keyword">let</span> len = strs[<span class="hljs-number">0</span>].<span class="hljs-property">length</span>;<br>  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (i; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">if</span> (strs[strs.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>].<span class="hljs-title function_">charAt</span>(i) !== strs[<span class="hljs-number">0</span>].<span class="hljs-title function_">charAt</span>(i)) <span class="hljs-keyword">break</span>;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-keyword">return</span> strs[<span class="hljs-number">0</span>].<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, i);<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -34,8 +34,8 @@
   
   <entry>
     <title>获取两数之和索引.md</title>
-    <link href="/2023/02/11/%E8%8E%B7%E5%8F%96%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E7%B4%A2%E5%BC%95-md/"/>
-    <url>/2023/02/11/%E8%8E%B7%E5%8F%96%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E7%B4%A2%E5%BC%95-md/</url>
+    <link href="/2023/02/11/%E8%8E%B7%E5%8F%96%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E7%B4%A2%E5%BC%95/"/>
+    <url>/2023/02/11/%E8%8E%B7%E5%8F%96%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E7%B4%A2%E5%BC%95/</url>
     
     <content type="html"><![CDATA[<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>给定目标值，和一个数字数组，返回数组中两个相加等于目标值的item的索引。</p><p>例如：</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">target</span>: <span class="hljs-number">9</span><br><span class="hljs-attribute">list</span>:<span class="hljs-meta"> [1, 2, 3, 4, 5]</span><br><span class="hljs-attribute">output</span>:<span class="hljs-meta"> [3, 4]</span><br></code></pre></td></tr></table></figure><p>list中4, 5 相加等于目标值，所以输出为4和5在数组中的索引值。</p><blockquote><p>如果有多组答案，只需要输出一组即可。</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这里大概说一下两种解题思路，最简单的一种是采用暴力枚举的方式，第二种方式是使用target - item 的差值，判断创建好的对象或者map中是否包含这个差值，如果包含就返回索引，不包含就把item: index 存储到对象或者map中。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number[]</span>&#125; <span class="hljs-variable">nums</span></span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number</span>&#125; <span class="hljs-variable">target</span></span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-type">number[]</span>&#125;</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">var</span> twoSum1 = <span class="hljs-keyword">function</span> (<span class="hljs-params">nums, target</span>) &#123;<br>    <span class="hljs-comment">// 思路，暴力枚举，用target - 当前数组项，在数组中查看是否有结果</span><br>    <span class="hljs-keyword">let</span> indexs = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-property">length</span>; i++) &#123;<br>      <span class="hljs-keyword">let</span> item = nums[i];<br>      <span class="hljs-keyword">if</span> (target - item &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">const</span> val = target - item;<br>        <span class="hljs-keyword">const</span> info = nums.<span class="hljs-title function_">findIndex</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item === val);<br>        <span class="hljs-keyword">if</span> (info !== -<span class="hljs-number">1</span>) &#123;<br>          indexs.<span class="hljs-title function_">push</span>(i, info);<br>          <span class="hljs-keyword">break</span>;<br>        &#125;<br>      &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> indexs;<br>  &#125;;<br><br>  <span class="hljs-keyword">var</span> twoSum2 = <span class="hljs-keyword">function</span> (<span class="hljs-params">nums, target</span>) &#123;<br>    <span class="hljs-comment">// 思路，创建一个对象，遍历数组之后，利用target - item ,如果这个值存在于对象中，就直接</span><br>    <span class="hljs-comment">// 返回当前索引和对象中存储的索引，如果不存在，就直接将当前数据存储到对象中，值是索引值</span><br>    <span class="hljs-keyword">let</span> obj = &#123;&#125;;<br>    <span class="hljs-keyword">let</span> arr = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-property">length</span>; i++) &#123;<br>      <span class="hljs-keyword">var</span> val = target - nums[i]; <span class="hljs-comment">// 8</span><br>      <span class="hljs-keyword">if</span> (val <span class="hljs-keyword">in</span> obj) &#123;<br>        arr.<span class="hljs-title function_">push</span>(i, obj[val]);<br>        <span class="hljs-keyword">break</span>;<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        obj[nums[i]] = i;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>  &#125;;<br><br>  <span class="hljs-keyword">var</span> twoSum3 = <span class="hljs-keyword">function</span>(<span class="hljs-params">nums, target</span>) &#123;<br>    <span class="hljs-comment">// 思路，设置一个map，如果target - nums[i] 在map中存在，那么就直接返回索引值</span><br>    <span class="hljs-comment">// 不存在就将当前值和索引值存进去</span><br>    <span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-property">length</span>; i ++) &#123;<br>      <span class="hljs-keyword">if</span> (map.<span class="hljs-title function_">has</span>(target - nums[i])) &#123;<br>        <span class="hljs-keyword">return</span> [ i, map.<span class="hljs-title function_">get</span>(target - nums[i]) ]<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        map.<span class="hljs-title function_">set</span>(nums[i], i)<br>      &#125;<br>    &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -61,60 +61,10 @@
   
   <entry>
     <title>判断回文数的两种思路.md</title>
-    <link href="/2023/02/09/%E5%88%A4%E6%96%AD%E5%9B%9E%E6%96%87%E6%95%B0%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%80%9D%E8%B7%AF-md/"/>
-    <url>/2023/02/09/%E5%88%A4%E6%96%AD%E5%9B%9E%E6%96%87%E6%95%B0%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%80%9D%E8%B7%AF-md/</url>
+    <link href="/2023/02/09/%E5%88%A4%E6%96%AD%E5%9B%9E%E6%96%87%E6%95%B0%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%80%9D%E8%B7%AF/"/>
+    <url>/2023/02/09/%E5%88%A4%E6%96%AD%E5%9B%9E%E6%96%87%E6%95%B0%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%80%9D%E8%B7%AF/</url>
     
     <content type="html"><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>回文数指的是一个前后颠倒后依然和原本的值相等的数字。例如，121就是一个回文数，1234321也同样是一个回文数。</p><p>回文数不能是负数，例如-123就不是一个回文数。</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这里记录两种解题思路。</p><p>第一种是将要判断的数字变成一个字符串，然后切割成一个数组，将数组反转后逐一和变成字符串的数字进行比较，如果比较结果全部相同，就是回文数，否则则不是。</p><p>第二种可以理解为是第一种的升级版，把数字变成字符串后反转再变成字符串和原本的字符串进行比较，如果相同则是回文数，否则不是回文数。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><strong>写法1</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">isPalindrome1</span> = (<span class="hljs-params">x</span>) =&gt; &#123;<br>  <span class="hljs-keyword">let</span> s = <span class="hljs-title class_">String</span>(x);<br>  <span class="hljs-keyword">let</span> len = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(s.<span class="hljs-property">length</span> / <span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">let</span> arr = s.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&quot;</span>).<span class="hljs-title function_">reverse</span>();<br>    <span class="hljs-keyword">if</span> (arr[i] !== s[i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;;<br></code></pre></td></tr></table></figure><p><strong>写法2</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> isPalindrome2 = <span class="hljs-keyword">function</span> (<span class="hljs-params">x</span>) &#123;<br>  <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    x = x.<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    <span class="hljs-keyword">if</span> (x.<span class="hljs-title function_">toString</span>() === x.<span class="hljs-title function_">reverse</span>().<span class="hljs-title function_">toString</span>()) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端基础</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>前端基础</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>访问测试.md</title>
-    <link href="/2023/02/07/%E8%AE%BF%E9%97%AE%E6%B5%8B%E8%AF%95-md/"/>
-    <url>/2023/02/07/%E8%AE%BF%E9%97%AE%E6%B5%8B%E8%AF%95-md/</url>
-    
-    <content type="html"><![CDATA[<p>这是一篇用来测试访问速度的文章。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>工具</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>工具</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>html入门.md</title>
-    <link href="/2023/02/07/html%E5%85%A5%E9%97%A8-md/"/>
-    <url>/2023/02/07/html%E5%85%A5%E9%97%A8-md/</url>
-    
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p>]]></content>
     
     
     <categories>

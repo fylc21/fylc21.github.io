@@ -16,26 +16,25 @@
   <meta name="author" content="方圆">
   <meta name="keywords" content="JavaScript,Vue,React,Node,小程序,算法,数据结构">
   
-    <meta name="description" content="说明编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串””。 例如： 123456输入：strs &#x3D; [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出：&quot;fl&quot;输入：strs &#x3D; [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;">
+    <meta name="description" content="说明bind方法是js中较为常用的一个方法，主要的作用就是用来改变this的指向，和call、apply方法的作用相同，但是不同的是，bind方法改变完this指向后并不会立刻执行函数，而是等待函数的再次调用。 易错点这里举一个常见的例子，当一个函数使用bind修改完this指向，并且传递了参数后，当再次调用函数，同时传递参数后，实参对应形参的位置就会为最后一个形参。 例如： 123456789f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最长公共前缀">
-<meta property="og:url" content="http://example.com/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/index.html">
+<meta property="og:title" content="bind方法的易错点">
+<meta property="og:url" content="http://example.com/2023/02/18/bind%E6%96%B9%E6%B3%95%E7%9A%84%E6%98%93%E9%94%99%E7%82%B9/index.html">
 <meta property="og:site_name" content="方圆的自留地">
-<meta property="og:description" content="说明编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串””。 例如： 123456输入：strs &#x3D; [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出：&quot;fl&quot;输入：strs &#x3D; [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;">
+<meta property="og:description" content="说明bind方法是js中较为常用的一个方法，主要的作用就是用来改变this的指向，和call、apply方法的作用相同，但是不同的是，bind方法改变完this指向后并不会立刻执行函数，而是等待函数的再次调用。 易错点这里举一个常见的例子，当一个函数使用bind修改完this指向，并且传递了参数后，当再次调用函数，同时传递参数后，实参对应形参的位置就会为最后一个形参。 例如： 123456789f">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic4.zhimg.com/v2-883d1e2c086150f6043a1d2020c9c453_r.jpg">
-<meta property="article:published_time" content="2023-02-14T04:53:40.000Z">
-<meta property="article:modified_time" content="2023-02-14T05:25:05.950Z">
+<meta property="og:image" content="https://ts1.cn.mm.bing.net/th/id/R-C.f6ee68d48f8146cbe2630aab91b7b628?rik=gur9el6554ZO5g&riu=http%3a%2f%2fdl.yzz.cn%2fpublic%2fimages%2f100204%2f27_154425_9.jpg&ehk=4LLFV1f5RN177FC%2f9aFECflGBtnMrP6hpaPNBpQEZyA%3d&risl=&pid=ImgRaw&r=0">
+<meta property="article:published_time" content="2023-02-18T02:25:28.000Z">
+<meta property="article:modified_time" content="2023-02-18T02:47:37.217Z">
 <meta property="article:author" content="方圆">
 <meta property="article:tag" content="前端基础">
-<meta property="article:tag" content="最长公共前缀">
-<meta property="article:tag" content="算法基础题">
+<meta property="article:tag" content="js bind方法">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic4.zhimg.com/v2-883d1e2c086150f6043a1d2020c9c453_r.jpg">
+<meta name="twitter:image" content="https://ts1.cn.mm.bing.net/th/id/R-C.f6ee68d48f8146cbe2630aab91b7b628?rik=gur9el6554ZO5g&riu=http%3a%2f%2fdl.yzz.cn%2fpublic%2fimages%2f100204%2f27_154425_9.jpg&ehk=4LLFV1f5RN177FC%2f9aFECflGBtnMrP6hpaPNBpQEZyA%3d&risl=&pid=ImgRaw&r=0">
   
   
   
-  <title>最长公共前缀 - 方圆的自留地</title>
+  <title>bind方法的易错点 - 方圆的自留地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,13 +194,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://pic4.zhimg.com/v2-883d1e2c086150f6043a1d2020c9c453_r.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://ts1.cn.mm.bing.net/th/id/R-C.f6ee68d48f8146cbe2630aab91b7b628?rik=gur9el6554ZO5g&riu=http%3a%2f%2fdl.yzz.cn%2fpublic%2fimages%2f100204%2f27_154425_9.jpg&ehk=4LLFV1f5RN177FC%2f9aFECflGBtnMrP6hpaPNBpQEZyA%3d&risl=&pid=ImgRaw&r=0') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="最长公共前缀"></span>
+            <span id="subtitle" data-typed-text="bind方法的易错点"></span>
           
         </div>
 
@@ -212,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-14 12:53" pubdate>
-          2023年2月14日 下午
+        <time datetime="2023-02-18 10:25" pubdate>
+          2023年2月18日 上午
         </time>
       </span>
     
@@ -224,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          734 字
+          875 字
         
       </span>
     
@@ -235,7 +234,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -273,23 +272,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">最长公共前缀</h1>
+            <h1 style="display: none">bind方法的易错点</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串””。</p>
+                <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>bind方法是js中较为常用的一个方法，主要的作用就是用来改变this的指向，和call、apply方法的作用相同，但是不同的是，bind方法改变完this指向后并不会立刻执行函数，而是等待函数的再次调用。</p>
+<h2 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h2><p>这里举一个常见的例子，当一个函数使用bind修改完this指向，并且传递了参数后，当再次调用函数，同时传递参数后，实参对应形参的位置就会为最后一个形参。</p>
 <p>例如：</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs armasm">输入：<span class="hljs-keyword">strs</span> = [<span class="hljs-string">&quot;flower&quot;</span>,<span class="hljs-string">&quot;flow&quot;</span>,<span class="hljs-string">&quot;flight&quot;</span>]<br>输出：<span class="hljs-string">&quot;fl&quot;</span><br><br>输入：<span class="hljs-keyword">strs</span> = [<span class="hljs-string">&quot;dog&quot;</span>,<span class="hljs-string">&quot;racecar&quot;</span>,<span class="hljs-string">&quot;car&quot;</span>]<br>输出：<span class="hljs-string">&quot;&quot;</span><br>解释：输入不存在公共前缀。<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">a,b,c</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;a:&#x27;</span>, a)<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;b:&#x27;</span>, b)<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;c:&#x27;</span>, c)<br>&#125;<br><br><span class="hljs-keyword">const</span> f = fn.<span class="hljs-title function_">bind</span>(<span class="hljs-literal">null</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>)<br><span class="hljs-comment">// 调用函数传递的参数就会被赋值到函数参数的最后，也就是c等于30</span><br><span class="hljs-title function_">f</span>(<span class="hljs-number">30</span>)<br></code></pre></td></tr></table></figure>
 
+<p>如果函数被绑定为事件处理函数，并且同时使用bind改变了this指向，那么event对象就会被赋值给最后一个形参。</p>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>点击<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">handle</span>(<span class="hljs-params">a, b, c</span>) &#123;</span><br><span class="language-javascript">  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;a:&quot;</span>, a);</span><br><span class="language-javascript">  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;b:&quot;</span>, b);</span><br><span class="language-javascript">  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;c:&quot;</span>, c);</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">const</span> btn = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;btn&#x27;</span>)</span><br><span class="language-javascript"><span class="hljs-comment">// 此时event对象会被赋值给形参列表中c这个形参</span></span><br><span class="language-javascript">btn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, handle.<span class="hljs-title function_">bind</span>(event, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>))</span><br><span class="language-javascript"></span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>首先进行边界处理，如果数组的长度&lt;&#x3D; 1，直接返回第一个数组元素。接下来利用sort方法对数组进行排序，排序之后的结果中数组元素最长的元素将会在数组的最后一位，再来进行遍历循环。</p>
-<p>获取数组中第一项的长度，利用这个元素的长度作为条件进行循环，利用数组中最后一项逐个字符与数组的第一项逐个字符进行比较，如果出现不同，则直接结束这个循环。</p>
-<p>循环之后，如果i值等于0，则表示没用公共前缀，所以直接返回空字符串。否则返回数组第一项中0到i的截取。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">longestCommonPrefix</span> = (<span class="hljs-params">strs</span>) =&gt; &#123;<br>  <span class="hljs-keyword">if</span> (strs.<span class="hljs-property">length</span> &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> strs[<span class="hljs-number">0</span>];<br>  strs.<span class="hljs-title function_">sort</span>();<br>  <span class="hljs-keyword">let</span> len = strs[<span class="hljs-number">0</span>].<span class="hljs-property">length</span>;<br>  <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (i; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">if</span> (strs[strs.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>].<span class="hljs-title function_">charAt</span>(i) !== strs[<span class="hljs-number">0</span>].<span class="hljs-title function_">charAt</span>(i)) <span class="hljs-keyword">break</span>;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-keyword">return</span> strs[<span class="hljs-number">0</span>].<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, i);<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
+<p>上面代码之所以event对象会被赋值给c，是因为上面代码的执行逻辑类似于下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> f = handle.<span class="hljs-title function_">bind</span>(<span class="hljs-literal">null</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>)<br><span class="hljs-title function_">f</span>(event)<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -326,9 +324,7 @@
       
         <a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">#前端基础</a>
       
-        <a href="/tags/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">#最长公共前缀</a>
-      
-        <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%A2%98/">#算法基础题</a>
+        <a href="/tags/js-bind%E6%96%B9%E6%B3%95/">#js bind方法</a>
       
     </div>
   
@@ -340,8 +336,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>最长公共前缀</div>
-      <div>http://example.com/2023/02/14/最长公共前缀/</div>
+      <div>bind方法的易错点</div>
+      <div>http://example.com/2023/02/18/bind方法的易错点/</div>
     </div>
     <div class="license-meta">
       
@@ -353,7 +349,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月14日</div>
+          <div>2023年2月18日</div>
         </div>
       
       
@@ -385,18 +381,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/18/bind%E6%96%B9%E6%B3%95%E7%9A%84%E6%98%93%E9%94%99%E7%82%B9/" title="bind方法的易错点">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">bind方法的易错点</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/11/%E8%8E%B7%E5%8F%96%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E7%B4%A2%E5%BC%95/" title="获取两数之和索引">
-                        <span class="hidden-mobile">获取两数之和索引</span>
+                      <a href="/2023/02/14/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" title="最长公共前缀">
+                        <span class="hidden-mobile">最长公共前缀</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
